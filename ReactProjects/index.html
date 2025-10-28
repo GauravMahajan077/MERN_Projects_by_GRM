@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Preply-style Landing — Demo</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Play CDN (good for demos) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config: custom colors & font
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            preplyPink: '#ff6b96', /* hero pink */
+            preplyPinkDark: '#ff5c85',
+            preplyTeal: '#2ED3B7',
+            preplyTealDark: '#1dbfa4',
+            preplyBlack: '#0b0b0b'
+          },
+          fontFamily: {
+            pop: ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* small utility for subtle card shadows */
+    .soft-shadow { box-shadow: 0 8px 28px rgba(11,11,11,0.08); }
+  </style>
+</head>
+<body class="font-pop bg-white text-gray-900">
+
+  <!-- Top thin announcement bar -->
+  <div class="bg-amber-100 text-amber-900 text-sm px-4 py-2 flex justify-center">
+    <div class="max-w-6xl w-full text-center">Find tutors worldwide — book a trial lesson today</div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white border-b">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-4">
+          <a href="#" class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded bg-preplyPinkDark flex items-center justify-center text-white font-bold">P</div>
+            <span class="font-bold text-lg">Preply — clone</span>
+          </a>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a class="hover:underline" href="#">Find a tutor</a>
+          <a class="hover:underline" href="#">Become a tutor</a>
+          <a class="hover:underline" href="#">For companies</a>
+          <button class="bg-preplyPink text-white px-3 py-2 rounded-md text-sm">Find your tutor</button>
+        </nav>
+
+        <!-- mobile menu toggle -->
+        <div class="md:hidden flex items-center">
+          <button id="mobileBtn" aria-label="toggle menu" class="p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="md:hidden border-t hidden">
+      <div class="px-4 py-3 space-y-2">
+        <a href="#" class="block">Find a tutor</a>
+        <a href="#" class="block">Become a tutor</a>
+        <a href="#" class="block">For companies</a>
+        <button class="w-full bg-preplyPink text-white px-3 py-2 rounded-md">Find your tutor</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="bg-preplyPink text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <!-- Left: Heading -->
+        <div class="md:col-span-6">
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 drop-shadow-sm">
+            Learn faster<br/>with your best<br/>language tutor.
+          </h1>
+          <p class="max-w-xl mb-6 text-lg font-medium/relaxed">
+            One-on-one lessons with vetted tutors — personalised to your goals. Try a trial lesson and start speaking!
+          </p>
+          <div class="flex gap-4 items-center">
+            <a class="inline-flex items-center bg-preplyBlack text-white px-5 py-3 rounded-full font-semibold shadow" href="#">
+              Find your tutor
+              <svg class="ml-3 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+            <a class="inline-flex items-center px-4 py-3 bg-white/20 rounded-full text-white text-sm" href="#">How it works</a>
+          </div>
+        </div>
+
+        <!-- Right: tutor card mock -->
+        <div class="md:col-span-6 flex justify-center md:justify-end">
+          <div class="bg-white rounded-2xl overflow-hidden soft-shadow w-full max-w-md">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=ea5c4b3c1d09fdfb14a4e4f9ae3c5c22" alt="Teacher" class="w-full h-48 object-cover">
+              <div class="absolute right-4 bottom-4 bg-preplyPink px-3 py-1 rounded-full text-white text-sm font-semibold">Live now</div>
+            </div>
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <div>
+                  <h3 class="font-semibold text-lg">Alex Johnson</h3>
+                  <p class="text-xs text-gray-500">English tutor • 4.9 ★</p>
+                </div>
+                <div class="text-right">
+                  <div class="text-sm font-bold">$20</div>
+                  <div class="text-xs text-gray-500">per lesson</div>
+                </div>
+              </div>
+              <p class="text-sm text-gray-600 mb-3">Experienced conversational tutor who helps adults reach fluency fast.</p>
+              <div class="flex gap-2">
+                <button class="flex-1 bg-preplyPink text-white rounded-md py-2 font-semibold">Book trial</button>
+                <button class="px-3 py-2 border rounded-md text-sm">Profile</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="mt-10 bg-white/10 rounded-lg py-5 px-4 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="text-center">
+          <div class="font-bold text-xl">100,000+</div>
+          <div class="text-sm">Experienced tutors</div>
+        </div>
+        <div class="text-center">
+          <div class="font-bold text-xl">300,000+</div>
+          <div class="text-sm">5-star tutor reviews</div>
+        </div>
+        <div class="text-center">
+          <div class="font-bold text-xl">4.8 ★</div>
+          <div class="text-sm">App store rating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tutors categories list -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="bg-white rounded-lg p-6 soft-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <ul class="divide-y">
+            <li class="py-3 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-preplyPink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 16v1a3 3 0 01-3 3H7a3 3 0 01-3-3v-1"></path>
+                </svg>
+                <div>
+                  <div class="font-medium">English tutors</div>
+                  <div class="text-xs text-gray-500">100,000+ tutors</div>
+                </div>
+              </div>
+              <div>›</div>
+            </li>
+
+            <li class="py-3 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-preplyPink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M19 5v.01M5 5v.01"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20v-6"></path>
+                </svg>
+                <div>
+                  <div class="font-medium">Spanish tutors</div>
+                  <div class="text-xs text-gray-500">34,000+ tutors</div>
+                </div>
+              </div>
+              <div>›</div>
+            </li>
+
+            <li class="py-3 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-preplyPink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 12h8M8 17h8"></path>
+                </svg>
+                <div>
+                  <div class="font-medium">French tutors</div>
+                  <div class="text-xs text-gray-500">20,000+ tutors</div>
+                </div>
+              </div>
+              <div>›</div>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <ul class="divide-y">
+            <li class="py-3 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-preplyPink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"></path>
+                </svg>
+                <div>
+                  <div class="font-medium">German tutors</div>
+                  <div class="text-xs text-gray-500">10,000+ tutors</div>
+                </div>
+              </div>
+              <div>›</div>
+            </li>
+
+            <li class="py-3 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-preplyPink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M7 12h4M7 17h10"></path>
+                </svg>
+                <div>
+                  <div class="font-medium">Italian tutors</div>
+                  <div class="text-xs text-gray-500">8,000+ tutors</div>
+                </div>
+              </div>
+              <div>›</div>
+            </li>
+
+            <li class="py-3 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-preplyPink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6l4 2"></path>
+                </svg>
+                <div>
+                  <div class="font-medium">Chinese tutors</div>
+                  <div class="text-xs text-gray-500">22,000+ tutors</div>
+                </div>
+              </div>
+              <div>›</div>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <ul class="divide-y">
+            <li class="py-3 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-preplyPink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2l4 6H8l4-6zM12 22v-8"></path>
+                </svg>
+                <div>
+                  <div class="font-medium">Japanese tutors</div>
+                  <div class="text-xs text-gray-500">5,000+ tutors</div>
+                </div>
+              </div>
+              <div>›</div>
+            </li>
+
+            <li class="py-3 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-preplyPink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"></path>
+                </svg>
+                <div>
+                  <div class="font-medium">Arabic tutors</div>
+                  <div class="text-xs text-gray-500">6,000+ tutors</div>
+                </div>
+              </div>
+              <div>›</div>
+            </li>
+
+            <li class="py-3 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-preplyPink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"></path>
+                </svg>
+                <div>
+                  <div class="font-medium">Portuguese tutors</div>
+                  <div class="text-xs text-gray-500">7,000+ tutors</div>
+                </div>
+              </div>
+              <div>›</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-6 text-sm text-gray-500">+ Show more</div>
+    </div>
+  </section>
+
+  <!-- Find the right tutor -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Find the right tutor for you.</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="md:col-span-2">
+        <!-- Testimonial carousel -->
+        <div class="bg-white rounded-lg soft-shadow p-6 relative overflow-hidden">
+          <div id="testimonialContainer" class="space-y-4">
+            <!-- slides injected by JS -->
+            <div class="testimonial-slide">
+              <div class="flex items-center gap-6">
+                <img src="https://images.unsplash.com/photo-1545996124-76d3d6f3a6a0?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=6d7b9c2b9d1f6a3abcf0b2fd9a8a6c55" class="w-36 h-36 object-cover rounded" alt="">
+                <div>
+                  <blockquote class="text-lg italic">"The energy she brings to each lesson is amazing. I finally speak more confidently."</blockquote>
+                  <div class="mt-3 font-semibold">— Laura, Spanish learner</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-slide hidden">
+              <div class="flex items-center gap-6">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=ea5c4b3c1d09fdfb14a4e4f9ae3c5c22" class="w-36 h-36 object-cover rounded" alt="">
+                <div>
+                  <blockquote class="text-lg italic">"My German tutor helped me ace my job interview — lessons were very practical."</blockquote>
+                  <div class="mt-3 font-semibold">— Mark, Business German</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- nav -->
+          <div class="absolute left-4 bottom-4 flex gap-2">
+            <button id="prevTestimonial" class="bg-white/90 rounded-full p-2 soft-shadow" aria-label="prev">
+              ‹
+            </button>
+            <button id="nextTestimonial" class="bg-white/90 rounded-full p-2 soft-shadow" aria-label="next">
+              ›
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg p-6 soft-shadow">
+        <h3 class="font-bold text-xl mb-3">Why choose 1:1 lessons?</h3>
+        <ul class="list-disc pl-5 space-y-2 text-sm text-gray-600">
+          <li>Lessons tailored to your goals</li>
+          <li>Flexible schedule — book anytime</li>
+          <li>Experienced tutors and quick progress</li>
+        </ul>
+        <div class="mt-4">
+          <a class="inline-flex items-center bg-preplyBlack text-white px-4 py-2 rounded-md" href="#">Start learning</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="bg-gray-50 py-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h3 class="text-2xl font-extrabold mb-6">How Preply works:</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg p-6 soft-shadow">
+          <div class="text-preplyPink font-bold text-2xl mb-3">1</div>
+          <h4 class="font-semibold">Find your tutor</h4>
+          <p class="text-sm text-gray-600 mt-2">Filter by language, price, availability and take a trial to check your match.</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 soft-shadow">
+          <div class="text-preplyPink font-bold text-2xl mb-3">2</div>
+          <h4 class="font-semibold">Start learning</h4>
+          <p class="text-sm text-gray-600 mt-2">Personalised lesson plans that hit your goals fast.</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 soft-shadow">
+          <div class="text-preplyPink font-bold text-2xl mb-3">3</div>
+          <h4 class="font-semibold">Speak & write</h4>
+          <p class="text-sm text-gray-600 mt-2">Gain confidence through practice and real feedback.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Big pink CTA -->
+  <section class="bg-preplyPink text-white py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <h2 class="text-3xl md:text-4xl font-extrabold">Lessons you’ll love. Guaranteed.</h2>
+      <a class="bg-preplyBlack px-6 py-3 rounded-full font-semibold" href="#">Find a tutor</a>
+    </div>
+  </section>
+
+  <!-- Become a tutor section -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+      <div class="md:col-span-2 bg-white rounded-lg p-6 soft-shadow">
+        <h3 class="text-2xl font-extrabold mb-4">Become a tutor</h3>
+        <p class="text-sm text-gray-600">Earn teaching online or in-person. Flexible hours, global students, and secure payments.</p>
+        <ul class="mt-4 list-disc pl-5 space-y-2 text-sm text-gray-600">
+          <li>Find new students quickly</li>
+          <li>Grow your business with tools</li>
+          <li>Get paid securely</li>
+        </ul>
+        <div class="mt-4">
+          <a class="inline-flex items-center bg-preplyPink text-white px-4 py-2 rounded-md" href="#">Become a tutor</a>
+        </div>
+      </div>
+
+      <div class="bg-preplyTeal text-preplyBlack rounded-lg p-6 flex flex-col justify-center">
+        <h4 class="font-extrabold text-xl mb-2 text-white">Become a tutor</h4>
+        <p class="text-white/90 mb-4">Teach what you love. Set your price. Work from anywhere.</p>
+        <a class="bg-white px-3 py-2 rounded-md inline-block font-semibold" href="#">Register</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Corporate language training -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h3 class="text-3xl font-extrabold mb-6">Corporate language training for business</h3>
+    <div class="bg-white rounded-lg p-6 soft-shadow grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+      <div class="md:col-span-2">
+        <p class="text-gray-600 mb-4">Customised language programs for teams — improve cross-border communication, presentations & negotiation skills.</p>
+        <div class="flex gap-3">
+          <button class="bg-preplyBlack text-white px-4 py-2 rounded-md">Book a demo</button>
+          <button class="px-4 py-2 border rounded-md">Talk to our company</button>
+        </div>
+      </div>
+      <div class="flex justify-end">
+        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=2f2c9df4e6ec31e49f5a3dc3310e9f51" alt="corporate" class="w-36 h-24 object-cover rounded">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-preplyBlack text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <div class="w-8 h-8 rounded bg-preplyPinkDark flex items-center justify-center font-bold">P</div>
+          <div class="font-bold text-lg">Preply — clone</div>
+        </div>
+        <p class="text-sm text-white/80">Personalised online lessons with experienced tutors worldwide.</p>
+      </div>
+
+      <div>
+        <h4 class="font-semibold mb-2">For students</h4>
+        <ul class="text-sm text-white/80 space-y-1">
+          <li>Find a tutor</li>
+          <li>How it works</li>
+          <li>Pricing</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-semibold mb-2">For tutors</h4>
+        <ul class="text-sm text-white/80 space-y-1">
+          <li>Become a tutor</li>
+          <li>Resources</li>
+          <li>Help center</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-semibold mb-2">Company</h4>
+        <ul class="text-sm text-white/80 space-y-1">
+          <li>About</li>
+          <li>Careers</li>
+          <li>Contact</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 py-6">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-white/70 flex items-center justify-between">
+        <div>© <span id="year"></span> Preply — clone</div>
+        <div class="space-x-4">Privacy • Terms</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Small JS for toggles and carousel -->
+  <script>
+    // mobile menu toggle
+    const mobileBtn = document.getElementById('mobileBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // testimonial simple slider
+    const slides = Array.from(document.querySelectorAll('.testimonial-slide'));
+    let idx = 0;
+    function showSlide(n) {
+      slides.forEach((s, i) => {
+        if (i === n) s.classList.remove('hidden');
+        else s.classList.add('hidden');
+      });
+    }
+    document.getElementById('nextTestimonial').addEventListener('click', () => {
+      idx = (idx + 1) % slides.length;
+      showSlide(idx);
+    });
+    document.getElementById('prevTestimonial').addEventListener('click', () => {
+      idx = (idx - 1 + slides.length) % slides.length;
+      showSlide(idx);
+    });
+
+    // auto-rotate
+    setInterval(() => {
+      idx = (idx + 1) % slides.length;
+      showSlide(idx);
+    }, 6000);
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

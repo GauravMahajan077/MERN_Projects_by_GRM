@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 7 - Portfolio Layout</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .header-bg {
+      background-color: #343a40;
+      color: white;
+      padding: 20px 0;
+    }
+    .card-custom {
+      margin-bottom: 20px;
+    }
+    .btn-custom {
+      background-color: #007bff;
+      color: white;
+    }
+    .btn-custom:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <header class="header-bg text-center">
+    <h1>GAURAV MAHAJAN'S PORTFOLIO</h1>
+    <p class="lead">Welcome to my creative showcase</p>
+  </header>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12 col-md-4 mb-4">
+        <div class="card card-custom">
+          <div class="card-body">
+            <h5 class="card-title">About Me</h5>
+            <p class="card-text">A passionate developer with experience in web development and design.</p>
+            <button class="btn btn-custom" onclick="showDetails('about')">View Details</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 mb-4">
+        <div class="card card-custom">
+          <div class="card-body">
+            <h5 class="card-title">Projects</h5>
+            <p class="card-text">Check out my latest projects and contributions.</p>
+            <button class="btn btn-custom" onclick="showDetails('projects')">View Details</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 mb-4">
+        <div class="card card-custom">
+          <div class="card-body">
+            <h5 class="card-title">Contact</h5>
+            <p class="card-text">Get in touch for collaborations or inquiries.</p>
+            <button class="btn btn-custom" onclick="showDetails('contact')">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="details" class="mt-4" style="display: none;">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" id="detail-title"></h5>
+          <p class="card-text" id="detail-content"></p>
+          <button class="btn btn-custom" onclick="hideDetails()">Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function showDetails(section) {
+      const details = document.getElementById('details');
+      const title = document.getElementById('detail-title');
+      const content = document.getElementById('detail-content');
+
+      switch(section) {
+        case 'about':
+          title.textContent = 'About Me';
+          content.textContent = 'I am a dedicated web developer with a focus on creating responsive and user-friendly websites.';
+          break;
+        case 'projects':
+          title.textContent = 'Projects';
+          content.textContent = 'Explore my portfolio including a variety of web applications and design projects.';
+          break;
+        case 'contact':
+          title.textContent = 'Contact';
+          content.textContent = 'Email: gaurav.mahajan@example.com | Phone: 9876543210';
+          break;
+      }
+      details.style.display = 'block';
+    }
+
+    function hideDetails() {
+      document.getElementById('details').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Submit Review</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 700px; margin: auto; }
+    label { display:block; margin-top:12px; }
+    input, textarea, select { width:100%; padding:8px; margin-top:6px; box-sizing: border-box; }
+    button { margin-top:12px; padding:10px 14px; cursor:pointer; }
+    .success { color: green; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Leave a Review</h1>
+  <div id="root"></div>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function ReviewForm() {
+      const [name, setName] = useState('');
+      const [rating, setRating] = useState(5);
+      const [comment, setComment] = useState('');
+      const [loading, setLoading] = useState(false);
+      const [error, setError] = useState('');
+      const [saved, setSaved] = useState(false);
+
+      async function handleSubmit(e) {
+        e.preventDefault();
+        setError('');
+        setSaved(false);
+
+        if (!name.trim() || !rating) {
+          setError('Please provide your name and a rating.');
+          return;
+        }
+
+        setLoading(true);
+        try {
+          const res = await fetch('/api/reviews', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, rating, comment })
+          });
+
+          if (!res.ok) {
+            let text;
+            try { text = await res.text(); } catch(e) { text = res.statusText; }
+            throw new Error(text || 'Failed to fetch');
+          }
+
+          const data = await res.json();
+          console.log('Saved:', data);
+          setSaved(true);
+          setTimeout(() => { window.location.href = '/reviews.html'; }, 700);
+        } catch (err) {
+          console.error('POST error:', err);
+          setError(err.message || 'Failed to fetch');
+        } finally {
+          setLoading(false);
+        }
+      }
+
+      return (
+        <form onSubmit={handleSubmit}>
+          <label>
+            Your name
+            <input value={name} onChange={e=>setName(e.target.value)} placeholder="Name" />
+          </label>
+
+          <label>
+            Rating
+            <select value={rating} onChange={e=>setRating(e.target.value)}>
+              <option value="5">5 — Excellent</option>
+              <option value="4">4 — Good</option>
+              <option value="3">3 — Okay</option>
+              <option value="2">2 — Poor</option>
+              <option value="1">1 — Terrible</option>
+            </select>
+          </label>
+
+          <label>
+            Comment (optional)
+            <textarea rows="5" value={comment} onChange={e=>setComment(e.target.value)} />
+          </label>
+
+          <button type="submit" disabled={loading}>
+            {loading ? 'Saving...' : 'Submit Review'}
+          </button>
+
+          {saved && <div className="success">Saved! Redirecting to reviews…</div>}
+          {error && <div style={{color:'red', marginTop:10}}>Error: {error}</div>}
+
+          <p style={{marginTop:12}}>
+            <a href="/reviews.html">See all reviews</a>
+          </p>
+        </form>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<ReviewForm />);
+  </script>
+</body>
+</html>

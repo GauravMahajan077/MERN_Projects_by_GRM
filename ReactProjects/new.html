@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 4</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f5f7;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      padding: 20px;
+      background-color: #4a90e2;
+      color: white;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 40px;
+    }
+    header h2 {
+      margin: 5px 0;
+      font-size: 20px;
+      font-weight: normal;
+    }
+    main {
+      margin-top: 40px;
+    }
+    .problem {
+      background-color: #ffffff;
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+      font-size: 18px;
+    }
+    button {
+      background-color: #4a90e2;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #357ABD;
+    }
+    .back-btn {
+      background-color: #ff6f61;
+    }
+    .back-btn:hover {
+      background-color: #e85b50;
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #555;
+    }
+    input {
+      padding: 8px;
+      font-size: 16px;
+      margin: 5px;
+    }
+    .output {
+      margin-top: 15px;
+      font-size: 16px;
+      color: #333;
+      white-space: pre-line;
+      text-align: left;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>GAURAV MAHAJAN - TE IT-A</h1>
+  <h2>EXPERIMENT 4</h2>
+</header>
+
+<main id="main-content">
+  <div class="problem">
+    <strong>Problem 1:</strong> Roots of Quadratic Equation <br>
+    <button onclick="showQuadratic()">Solve</button>
+  </div>
+  <div class="problem">
+    <strong>Problem 2:</strong> Generate Prime Numbers (1 to 100) <br>
+    <button onclick="showPrime()">Generate</button>
+  </div>
+  <div class="problem">
+    <strong>Problem 3:</strong> Functions as Object, Arrow Function, Inner Function <br>
+    <button onclick="showFunctions()">Run</button>
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 Gaurav Mahajan. All rights reserved.
+</footer>
+
+<script>
+/* Problem 1: Quadratic Roots */
+function showQuadratic() {
+  document.getElementById("main-content").innerHTML = `
+    <div class="problem">
+      <h2>Problem 1: Roots of Quadratic Equation</h2>
+      <p>Enter values of a, b, and c:</p>
+      <input type="number" id="a" placeholder="a">
+      <input type="number" id="b" placeholder="b">
+      <input type="number" id="c" placeholder="c"><br>
+      <button onclick="calculateRoots()">Calculate</button>
+      <div id="quad-output" class="output"></div><br>
+      <button class="back-btn" onclick="location.reload()">Back</button>
+    </div>
+  `;
+}
+function calculateRoots() {
+  let a = parseFloat(document.getElementById("a").value);
+  let b = parseFloat(document.getElementById("b").value);
+  let c = parseFloat(document.getElementById("c").value);
+  let discriminant = b*b - 4*a*c;
+  let result;
+  if (discriminant > 0) {
+    let root1 = (-b + Math.sqrt(discriminant)) / (2*a);
+    let root2 = (-b - Math.sqrt(discriminant)) / (2*a);
+    result = "Roots are: " + root1.toFixed(2) + " and " + root2.toFixed(2);
+  } else if (discriminant === 0) {
+    let root = -b / (2*a);
+    result = "Roots are equal: " + root.toFixed(2);
+  } else {
+    result = "No real roots.";
+  }
+  document.getElementById("quad-output").textContent = result;
+}
+
+/* Problem 2: Prime Numbers */
+function showPrime() {
+  document.getElementById("main-content").innerHTML = `
+    <div class="problem">
+      <h2>Problem 2: Prime Numbers from 1 to 100</h2>
+      <button onclick="generatePrimes()">Show Primes</button>
+      <div id="prime-output" class="output"></div><br>
+      <button class="back-btn" onclick="location.reload()">Back</button>
+    </div>
+  `;
+}
+function generatePrimes() {
+  let primes = [];
+  for (let i = 2; i <= 100; i++) {
+    let isPrime = true;
+    for (let j = 2; j <= Math.sqrt(i); j++) {
+      if (i % j === 0) {
+        isPrime = false;
+        break;
+      }
+    }
+    if (isPrime) primes.push(i);
+  }
+  document.getElementById("prime-output").textContent = primes.join(", ");
+}
+
+/* Problem 3: Functions */
+function showFunctions() {
+  document.getElementById("main-content").innerHTML = `
+    <div class="problem">
+      <h2>Problem 3: Functions in JavaScript</h2>
+      <button onclick="runFunctions()">Run Code</button>
+      <div id="func-output" class="output"></div><br>
+      <button class="back-btn" onclick="location.reload()">Back</button>
+    </div>
+  `;
+}
+function runFunctions() {
+  let output = "";
+
+  // Function as Object
+  function greet() {
+    return "Hello, world!";
+  }
+  let say_hello = greet;
+  output += "say_hello() returns: " + say_hello() + "\n";
+
+  // Arrow Function
+  let add = (a, b) => a + b;
+  output += `add(5, 7) using arrow function returns: ${add(5, 7)}\n`;
+
+  // Inner Function
+  function outer_function(msg) {
+    function inner_function() {
+      return "Message from inner function: " + msg;
+    }
+    return inner_function();
+  }
+  output += outer_function("Hello from the inner function!") + "\n";
+
+  // IIFE
+  output += "IIFE result of multiplying 3 and 4: " +
+            (function(x, y) { return x * y; })(3, 4) + "\n";
+
+  // Show Output
+  document.getElementById("func-output").textContent = output;
+}
+</script>
+</body>
+</html>

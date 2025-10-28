@@ -1,0 +1,31 @@
+<script>
+  async function getData() {
+    try {
+      let data = await fetch('http://localhost:3000/static/data.json');
+      if (!data.ok) throw new Error('Network response was not ok');
+      data = await data.json();
+      var parent = document.getElementById('reviews');
+      data.map((item) => {
+        var div = document.createElement('div');
+        var head = document.createElement('h5');
+        var subhead = document.createElement('h6');
+        var para = document.createElement('p');
+        head.innerHTML = item.username;
+        subhead.innerHTML = item.product + ' ' + item.p_id;
+        para.innerHTML = item.review;
+        div.classList.add('card');
+        div.classList.add('mb-4');
+        head.classList.add('card-title');
+        subhead.classList.add('card-subtitle');
+        subhead.classList.add('mb-2');
+        para.classList.add('card-text');
+        div.appendChild(head);
+        div.appendChild(subhead);
+        div.appendChild(para);
+        parent.appendChild(div);
+      });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+</script>

@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "baban",
+    "rating": 3,
+    "comment": "barobar nahi",
+    "createdAt": "2025-01-01T12:00:00.000Z"
+  },
+  {
+    "id": 1758481692579,
+    "name": "s",
+    "rating": 5,
+    "comment": "s",
+    "createdAt": "2025-09-21T19:08:12.579Z"
+  },
+  {
+    "id": 1758481728105,
+    "name": "gaurav mahajan",
+    "rating": 5,
+    "comment": "perfect!",
+    "createdAt": "2025-09-21T19:08:48.105Z"
+  },
+  {
+    "id": 1758481863052,
+    "name": "jn",
+    "rating": 5,
+    "comment": "n",
+    "createdAt": "2025-09-21T19:11:03.052Z"
+  }
+]

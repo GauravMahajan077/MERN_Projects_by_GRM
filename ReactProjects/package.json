@@ -1,0 +1,21 @@
+{
+  "name": "review-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "description": "// Project: preply-landing-react-vite-tailwind\r // Tech: React (Vite) + TailwindCSS\r // File structure (all files included below)\r // README.md\r // package.json\r // index.html\r // vite.config.js\r // tailwind.config.cjs\r // postcss.config.cjs\r // src/main.jsx\r // src/App.jsx\r // src/styles/index.css\r // src/components/Header.jsx\r // src/components/Hero.jsx\r // src/components/TutorsGrid.jsx\r // src/components/HowItWorks.jsx\r // src/components/CTA.jsx\r // src/components/Footer.jsx\r // public/screenshot.png  <-- Put your uploaded screenshot here or reference the image path you provided: /mnt/data/preply.com__campaignid=590172518&network=o&adgroupid=1145692800240040&keyword=preply&matchtype=e&creative=&targetid=kwd-71606484355703_loc-90&placement=&loc_physical_ms=116073&device=c&msclkid=8b2972cf62be1dec0f9e1.png",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
+
