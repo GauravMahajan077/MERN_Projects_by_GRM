@@ -1,4 +1,4 @@
-{
+{  "homepage": "https://GauravMahajan07.github.io/MERN_Projects_by_GRM/weather-monitoring-dashboard",
   "name": "weather-monitoring-dashboard",
   "version": "0.1.0",
   "private": true,
@@ -6,7 +6,9 @@
     "dev": "next dev --webpack",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "predeploy": "npm run build",
+"deploy": "gh-pages -d build"
   },
   "dependencies": {
     "axios": "^1.13.0",
@@ -18,6 +20,7 @@
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "16.0.0",
+    "gh-pages": "^6.3.0",
     "tailwindcss": "^4"
   }
 }
