@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Note - Notes Management System</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Notes Management System</h1>
+            <p>Edit your note</p>
+        </header>
+
+        <!-- Edit Note Form -->
+        <div class="form-container">
+            <h2>Edit Note</h2>
+            <form action="/edit/<%= note.noteTitle %>" method="post">
+                <div class="form-group">
+                    <label for="noteTitle">Note Title</label>
+                    <input type="text" class="form-control" id="noteTitle" name="noteTitle" value="<%= note.noteTitle %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="noteContent">Note Content</label>
+                    <textarea class="form-control" id="noteContent" name="noteContent" rows="6" required><%= note.noteContent %></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="noteCategory">Category</label>
+                    <select class="form-control" id="noteCategory" name="noteCategory" required>
+                        <option value="Work" <%= note.noteCategory === 'Work' ? 'selected' : '' %>>Work</option>
+                        <option value="Personal" <%= note.noteCategory === 'Personal' ? 'selected' : '' %>>Personal</option>
+                        <option value="Ideas" <%= note.noteCategory === 'Ideas' ? 'selected' : '' %>>Ideas</option>
+                        <option value="Todo" <%= note.noteCategory === 'Todo' ? 'selected' : '' %>>To-Do</option>
+                        <option value="Other" <%= note.noteCategory === 'Other' ? 'selected' : '' %>>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="noteStatus">Status</label>
+                    <select class="form-control" id="noteStatus" name="noteStatus" required>
+                        <option value="Active" <%= note.noteStatus === 'Active' ? 'selected' : '' %>>Active</option>
+                        <option value="Archived" <%= note.noteStatus === 'Archived' ? 'selected' : '' %>>Archived</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="isPinned" name="isPinned" <%= note.isPinned ? 'checked' : '' %>>
+                    <label for="isPinned">Pin this note</label>
+                </div>
+                <!-- Hidden fields to preserve creation date -->
+                <input type="hidden" name="createdAt" value="<%= note.createdAt %>">
+                
+                <button type="submit" class="btn btn-primary">Update Note</button>
+                <a href="/" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
